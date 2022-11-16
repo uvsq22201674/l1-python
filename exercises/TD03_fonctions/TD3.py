@@ -1,14 +1,19 @@
 import time
 
 
-def tempsEnSecondes(temps):
+def tempsEnSeconde(temps):
 
     """Fonction qui convertit un temps en seconde"""
     return int(temps[0])*86400 + int(temps[1])*3600 + \
-        int(temps[2])*60 + int(temps[-1])
+        int(temps[2])*60 + int(temps[3])
 
 
-def secondesEnTemps(secondes):
+temps = (3, 23, 1, 34)
+print(type(temps))
+print(tempsEnSeconde(temps))
+
+
+def secondeEnTemps(secondes):
 
     """ Fonction qui convertit un temp en secondes"""
 
@@ -31,6 +36,11 @@ def secondesEnTemps(secondes):
     temps[0] = jours
 
     return temps
+
+
+temps = secondeEnTemps(100000)
+print(temps[0], "jours", temps[1], "heures", temps[2], "minutes", temps[3],
+      "secondes")
 
 
 def afficheTemps(temps):
@@ -58,6 +68,9 @@ def afficheTemps(temps):
         print(temps[3], "secondes")
 
 
+afficheTemps((1, 0, 14, 23))
+
+
 def demandeTemps():
 
     """Fonction qui demande à l'utilisateur de saisir un temps"""
@@ -81,18 +94,27 @@ def demandeTemps():
     return temps
 
 
+afficheTemps(demandeTemps())
+
+
 def sommeTemps(temps1, temps2):
 
     """Fonction qu renvoie la somme de deux temps"""
 
-    return secondesEnTemps(tempsEnSecondes(temps1) + tempsEnSecondes(temps2))
+    return secondeEnTemps(tempsEnSeconde(temps1) + tempsEnSeconde(temps2))
+
+
+sommeTemps((2, 3, 4, 25), (5, 22, 57, 1))
 
 
 def proportionTemps(temps, proportion):
 
     """Fonction qui donne la proportion souhaité d'un temps donné"""
 
-    return secondesEnTemps(tempsEnSecondes(temps) * proportion)
+    return secondeEnTemps(tempsEnSeconde(temps) * proportion)
+
+
+afficheTemps(proportionTemps((2, 0, 36, 0), 0.2))
 
 
 def bisextile(jour):
@@ -128,6 +150,12 @@ def afficheDate(date):
     print(date[0], date[1], date[2], date[3], date[4])
 
 
+temps = secondeEnTemps(1000000000)
+afficheTemps(temps)
+afficheDate(tempsEnDate(temps))
+afficheDate()
+
+
 def nombreBisextile(jour):
 
     """Fonction qui retourne le nombre de jours bisextiles depuis 1970"""
@@ -146,12 +174,15 @@ def nombreBisextile(jour):
     return compte
 
 
+bisextile(20000)
+
+
 def tempsEnDateBisextile(temps):
 
     """Fonction qui change le temps en date en \
         prenant en compte les années bisextiles"""
 
-    jour = int(tempsEnSecondes(temps)) // 3600 // 24
+    jour = int(tempsEnSeconde(temps)) // 3600 // 24
     bi = int(nombreBisextile(jour))
     an = 1970
 
@@ -162,3 +193,8 @@ def tempsEnDateBisextile(temps):
         jour_ -= 365
 
     return (an, "an", jour_, "jour", temps[2], "minute", temps[3], "seconde")
+
+
+temps = secondeEnTemps(1000000000)
+afficheTemps(temps)
+afficheDate(tempsEnDateBisextile(temps))
