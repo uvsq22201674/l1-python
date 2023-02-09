@@ -8,16 +8,15 @@ def tempsEnSeconde(temps):
         int(temps[2])*60 + int(temps[3])
 
 
+'''
 temps = (3, 23, 1, 34)
 print(type(temps))
 print(tempsEnSeconde(temps))
-
+'''
 
 def secondeEnTemps(secondes):
 
     """ Fonction qui convertit un temp en secondes"""
-
-    temps = [0, 0, 0, 0]
 
     jours = 0
     heures = 0
@@ -30,18 +29,14 @@ def secondeEnTemps(secondes):
     minutes = int(secondes/60)
     secondes -= minutes*60
 
-    temps[3] = secondes
-    temps[2] = minutes
-    temps[1] = heures
-    temps[0] = jours
-
-    return temps
+    return (jours, heures, minutes, secondes)
 
 
+'''
 temps = secondeEnTemps(100000)
 print(temps[0], "jours", temps[1], "heures", temps[2], "minutes", temps[3],
       "secondes")
-
+'''
 
 def afficheTemps(temps):
 
@@ -68,7 +63,7 @@ def afficheTemps(temps):
         print(temps[3], "secondes")
 
 
-afficheTemps((1, 0, 14, 23))
+#afficheTemps((1, 0, 14, 23))
 
 
 def demandeTemps():
@@ -93,9 +88,11 @@ def demandeTemps():
 
     return temps
 
+'''
+demandeTemps()
 
 afficheTemps(demandeTemps())
-
+'''
 
 def sommeTemps(temps1, temps2):
 
@@ -104,7 +101,7 @@ def sommeTemps(temps1, temps2):
     return secondeEnTemps(tempsEnSeconde(temps1) + tempsEnSeconde(temps2))
 
 
-sommeTemps((2, 3, 4, 25), (5, 22, 57, 1))
+#afficheTemps(sommeTemps((2, 3, 4, 25), (5, 22, 57, 1)))
 
 
 def proportionTemps(temps, proportion):
@@ -114,7 +111,7 @@ def proportionTemps(temps, proportion):
     return secondeEnTemps(tempsEnSeconde(temps) * proportion)
 
 
-afficheTemps(proportionTemps((2, 0, 36, 0), 0.2))
+#afficheTemps(proportionTemps((2, 0, 36, 0), 0.2))
 
 
 def bisextile(jour):
@@ -141,7 +138,7 @@ def tempsEnDate(temps):
     return (an, jour, temps[1], temps[2], temps[3])
 
 
-def afficheDate(date):
+def afficheDate(date = -1):
 
     """Fonction qui affiche la date"""
 
@@ -149,12 +146,16 @@ def afficheDate(date):
 
     print(date[0], date[1], date[2], date[3], date[4])
 
-
 temps = secondeEnTemps(1000000000)
 afficheTemps(temps)
 afficheDate(tempsEnDate(temps))
 afficheDate()
 
+'''
+temps = secondeEnTemps(1000000000)
+afficheTemps(temps)
+afficheDate(tempsEnDate(temps))
+'''
 
 def nombreBisextile(jour):
 
@@ -174,7 +175,7 @@ def nombreBisextile(jour):
     return compte
 
 
-bisextile(20000)
+#bisextile(20000)
 
 
 def tempsEnDateBisextile(temps):
@@ -195,6 +196,8 @@ def tempsEnDateBisextile(temps):
     return (an, "an", jour_, "jour", temps[2], "minute", temps[3], "seconde")
 
 
+'''
 temps = secondeEnTemps(1000000000)
 afficheTemps(temps)
 afficheDate(tempsEnDateBisextile(temps))
+'''
